@@ -1,13 +1,18 @@
 import {
   RECEIVE_HOMEDATA,
+  RECEIVE_TOPICDATA,
+  RECEIVE_NAVDATA
 } from './mutations-type'
 
 import {
-  reqHomeData
+  reqHomeData,
+  reqTopciData,
+  reqNavData
 } from "../api"
 
 
 export default {
+  //获取首页数据
   async getHomeData({commit}, callback) {
     const result = await reqHomeData()
     if (result.code === 0) {
@@ -16,4 +21,21 @@ export default {
       callback && callback()
     }
   },
+//  获取识物页数据
+  async getTopicData({commit}) {
+    const result = await reqTopciData()
+    if (result.code === 0) {
+      const topicData = result.data
+      commit(RECEIVE_TOPICDATA, {topicData})
+    }
+  },
+  //  获取识物页数据
+  async getNavData({commit}) {
+    const result = await reqNavData()
+    if (result.code === 0) {
+      const navData = result.data
+      commit(RECEIVE_NAVDATA, {navData})
+    }
+  },
+
 }
