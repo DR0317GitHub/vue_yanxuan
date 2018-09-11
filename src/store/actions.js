@@ -3,7 +3,8 @@ import {
   RECEIVE_TOPICDATA,
   RECEIVE_NAVDATA,
   RECEIVE_NAVINDEX,
-  RECEIVE_NAVDETAIL
+  RECEIVE_NAVDETAIL,
+  LoginWay
 } from './mutations-type'
 
 import {
@@ -43,11 +44,16 @@ export default {
   setNavIndex({commit},index){
     commit(RECEIVE_NAVINDEX, index)
   },
-
+  //获取对应下标的信息
   getNavDetail({commit},callback){
     commit(RECEIVE_NAVDETAIL)
     callback && callback()
   },
+
+  //设置loginWay
+  setLoginWay({commit},loginWay){
+    commit(LoginWay,loginWay)
+  }
 
 
 

@@ -2,7 +2,7 @@
   <div v-if="data">
     <div class="one">
       <div class="title">{{data.name}}</div>
-      <img :src="data.Item[0].picUrl"/>
+      <img v-lazy="data.Item[0].picUrl"/>
       <div class="title-text">
         <span class="title-text-left">{{data.Item[0].title}}</span>
         <span class="title-text-right">{{data.Item[0].priceInfo}}元起</span>
@@ -14,14 +14,14 @@
         <div class="two_text1 ellipsis">{{data.Item[1].title}}</div>
         <div class="two_text2 ellipsis">{{data.Item[1].subTitle}}</div>
       </div>
-      <img :src="data.Item[1].picUrl"/>
+      <img v-lazy="data.Item[1].picUrl"/>
     </div>
     <div class="two">
       <div class="two_text" >
         <div class="two_text1 ellipsis">{{data.Item[2].title}}</div>
         <div class="two_text2 ellipsis">{{data.Item[2].subTitle}}</div>
       </div>
-      <img :src="data.Item[2].picUrl"/>
+      <img v-lazy="data.Item[2].picUrl"/>
     </div>
 
 

@@ -6,7 +6,7 @@
       <span>{{item.name+"好物"}}</span>
       <ul class="straight_conent float_clear">
           <li v-for="data in item.itemList" :key="data.id">
-            <img :src="data.listPicUrl">
+            <img  v-lazy="data.listPicUrl">
             <div class="ellipsis straight_conent_info">{{data.simpleDesc}}</div>
             <div class="straight_conent_text">
               <div class="ellipsis">{{data.name}}</div>

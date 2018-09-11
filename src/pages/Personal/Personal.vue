@@ -20,16 +20,16 @@
         <img src="../../assets/images/logo.png" alt="">
       </div>
       <div class="btns">
-        <div class="btn" @click="gotoPhone('/loginphone')">
+        <div class="btn"  @click="goLogoin(false)">
           <i class="iconfont icon-shouji"></i>
           <span>手机号码登录</span>
         </div>
-        <div class="btn dist" @click="goto('/login')">
+        <div class="btn dist" @click="goLogoin(true)">
           <i class="iconfont icon-youxiang space"></i>
           <span>邮箱账号登录</span>
         </div>
       </div>
-      <div class="quickLoign">
+      <div class="quickLoign" >
         <span>手机号快捷注册</span>
         <i class="iconfont icon-jiantouyou"></i>
       </div>
@@ -54,7 +54,12 @@
 <script>
 
   export default {
-
+    name: "Personal",
+    data(){
+      return{
+        loginWay: null
+      }
+    },
     created () {
       this.resetTop()
     },
@@ -62,12 +67,13 @@
       resetTop () {
         window.scrollTo(0, 0)
       },
-      goto(path){
-        this.$router.replace(path)
-      },
-      gotoPhone(path){
-        this.$router.replace(path)
-      },
+      goLogoin(loginWay1){
+        this.loginWay = loginWay1
+        //Vue.set(this.loginWay,'loginWay')
+        this.$router.replace('/login')
+        this.$store.dispatch('setLoginWay',this.loginWay)
+      }
+
     }
   }
 </script>

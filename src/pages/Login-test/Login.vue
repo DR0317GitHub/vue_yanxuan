@@ -5,23 +5,22 @@
     </div>
     <div class="Login-ZH">账号登录</div>
     <div class="Login-input">
-      <input placeholder="手机号"/>
+      <input placeholder="手机/邮箱/用户名"/>
+      <input placeholder="密码"/>
       <input placeholder="验证码"/>
-      <div class="login_hint">
-        温馨提示：未注册网易严选帐号的手机号，登录时将自动注册，且代表已同意
-        <a href="javascript:;">《用户服务协议》</a>
-      </div>
       <button>
         登录
       </button>
-      <div class="Login-My">
-        <a href="javascript:;">关于我们</a>
-      </div>
+        <div class="Login-My">
+          <a href="javascript:;">关于我们</a>
+        </div>
     </div>
   </div>
 </template>
 <script>
-  export default {}
+  export default {
+
+  }
 </script>
 <style scoped lang="stylus" rel="stylesheet/stylus">
   .logo
@@ -43,6 +42,7 @@
       border 1px solid #eeeeee
       margin 10px
       padding-left 30px
+      outline:none
     button
       display block
       width 280px
@@ -55,15 +55,5 @@
     .Login-My
       a
         color #999
-    .login_hint
-      font-size 12px
-      width 280px
-      height 50px
-      padding-left 50px
-      margin 10px
-      line-height 20px
-      color #999
-      a
-        color #b4282d
 
 </style>

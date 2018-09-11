@@ -7,7 +7,8 @@ import {
   RECEIVE_TOPICDATA,
   RECEIVE_NAVDATA,
   RECEIVE_NAVINDEX,
-  RECEIVE_NAVDETAIL
+  RECEIVE_NAVDETAIL,
+  LoginWay
 } from './mutations-type'
 
 export default {
@@ -30,6 +31,9 @@ export default {
   //获取分页的数据
   [RECEIVE_NAVDETAIL] (state) {
     state.NavDetail =state.navData[state.NavIndex]
+  },
+  [LoginWay](state,loginWay) {
+    state.loginWay = loginWay
   },
 
 }

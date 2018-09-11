@@ -1,5 +1,6 @@
 <template>
   <div class="div">
+    <Masklayer/>
     <!--固定头部-->
     <header>
       <div class="header_input">
@@ -130,12 +131,13 @@
   import Time from './Time/Time.vue'
   import Select from './Select/Select.vue'
   import GoodThing from './GoodThing/GoodThing.vue'
-
+  import Masklayer from '../../components/Masklayer/Masklayer.vue'
   export default {
     data() {
       return {
         navlist: ['推荐', '居家', '配件', '服装', '电器', '洗护', '饮食', '餐厨', '婴童', '文体', '特色区'],
         current: 0,
+        isMasklayer: false
       }
     },
     watch: {
@@ -187,7 +189,8 @@
       SenTiment,
       Time,
       Select,
-      GoodThing
+      GoodThing,
+      Masklayer
     }
   }
 </script>

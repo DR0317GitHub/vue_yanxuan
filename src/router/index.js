@@ -8,13 +8,16 @@ import Home from '../pages/Home/Home.vue'
 import Personal from '../pages/Personal/Personal.vue'
 import Shopping_Cart from '../pages/Shopping_Cart/Shopping_Cart.vue'
 import Login from '../pages/Login/Login.vue'
-import LoginPhone from '../pages/LoginPhone/LoginPhone.vue'
-
+import Interlayer from '../pages/Interlayer/Interlayer.vue'
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
+    {
+      path: '/interlayer',
+      component: Interlayer,
+    },
     {
       path: '/list',
       component: List,
@@ -58,16 +61,8 @@ export default new Router({
       }
     },
     {
-      path: '/loginphone',
-      component: LoginPhone,
-      meta:{
-        ShowFooter:false
-      }
-    },
-
-    {
       path: '/',
-      redirect:'/home'
+      redirect:'/interlayer'
     },
   ]
 })

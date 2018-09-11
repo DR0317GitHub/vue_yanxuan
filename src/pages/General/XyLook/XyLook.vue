@@ -1,9 +1,9 @@
 <template>
     <div class="xy-look" v-if="data">
       <div class="xy-look-title">严选LOOK</div>
-      <img :src="data.picUrl">
+      <img v-lazy="data.picUrl">
       <div class="xy-look-head">
-        <img :src="data.avatar">
+        <img v-lazy="data.avatar">
         <span>{{data.nickname}}</span>
       </div>
       <p>{{data.content}}</p>

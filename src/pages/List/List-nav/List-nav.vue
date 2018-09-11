@@ -43,12 +43,16 @@
 </script>
 <style scoped lang="stylus" rel="stylesheet/stylus">
   .Listnav
-    width 100%
-    height 100%
+    background: white
+    width 100px
+    height 700px
+    position fixed
+    top 0px
+    left 0px
+    margin-top 50px
     .list
-      width 100%
       height 830px
-      margin-top 50px
+      width 100px
       .list-left
         border-right 1px solid #eeeeee
         width 25%

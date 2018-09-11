@@ -1,7 +1,7 @@
 <template>
-  <div v-if="NavDetail">
+  <div class="div">
 
-  <div class="listDetail" :class="{'anim' : anim === true}" v-if="NavDetail">
+  <div class="ListDetail" :class="{'anim' : anim === true}" v-if="NavDetail">
     <div class="warp">
       <div class="banner">
         <img :src="NavDetail.bannerUrl" alt="">
@@ -16,7 +16,7 @@
         <ul class="list">
           <li class="item" v-for="(item) in NavDetail.subCateList" :key="item.id">
             <a href="javascript:;">
-              <img :src="item.wapBannerUrl" alt="">
+              <img v-lazy="item.wapBannerUrl" alt="">
               <span>{{item.name}}</span>
             </a>
           </li>
@@ -41,9 +41,10 @@
       }
     },
     mounted () {
-      this.$store.dispatch('getNavDetail', () => {
-        this.$nextTick(() => {
-          this._initScroll()
+      this.$store.dispatch('getNavDetail',()=>{
+        new BScroll ('.ListDetail', {
+          click: true,
+          scrollY: true
         })
       })
     },
@@ -52,15 +53,16 @@
     },
     methods: {
       _initScroll () {
-        new BScroll ('.listDetail', {
+        new BScroll ('.ListDetail', {
           click: true,
-          startY: 0
+          scrollY: true
         })
       }
     },
     watch: {
       navData(){
         this.$store.dispatch('getNavDetail')
+
       },
       navDetail: function () {
         this.anim = true
@@ -75,6 +77,7 @@
 
 <style lang='stylus' rel='stylesheet/stylus' scoped>
   @import '../../../common/stylus/mixins.styl'
+
   @keyframes animTop
     30%
       transform  translate3d(0, -50px, 0)
@@ -84,16 +87,17 @@
       transform  translate3d(0, -10px, 0)
     100%
       transform translate3d()
-  .listDetail
-    margin-top -670px
-    margin-left 95px
-    height 522px
+
+  .ListDetail
+    padding-left 100px
     background #ffffff
+    height 500px
+    margin-top 50px
     &.anim
       animation animTop .8s
     .warp
       padding 15px 15px 10px
-      height auto
+      height 800px
       background #ffffff
       .banner
         width 100%

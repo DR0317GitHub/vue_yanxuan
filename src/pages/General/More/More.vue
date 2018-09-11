@@ -5,7 +5,7 @@
       <div class="More-title-line"></div>
     </div>
     <div class="More-content" v-for="(item,index) in data" :key="index">
-      <img :src="item.itemPicUrl">
+      <img v-lazy="item.itemPicUrl">
       <div><span>{{item.title}}</span></div>
     </div>
   </div>
