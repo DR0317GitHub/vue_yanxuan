@@ -15,21 +15,40 @@
       </div>
 
     </header>
+    <!--锚点-->
+    <div class="maoD">
+      <a href="javaScript:;" @click="goToTop(0, 0, 500)">
+        <div>
+          <i class="iconfont icon-arrowup"></i>
+        </div>
+      </a>
+    </div>
     <div class="viewport-G">
       <div class="content">
         <!--轮播图-->
         <Shuffling />
 
-        <!--新品发布-->
+        <!--横向滚动-->
         <Product :data="topicData.column"></Product>
 
         <Grey/>
-
+        <!--为你推荐-->
         <Recommend :data="topicData.recommend"></Recommend>
 
+        <Grey/>
+        <!--十点一刻-->
+        <Ten :data="topicData.tenfifteen"/>
 
+        <Grey/>
 
+        <Recommend :data="topicData.zhen"></Recommend>
 
+        <Grey/>
+        <!--严选LOOK-->
+        <YxLook :data="topicData.yxLook"></YxLook>
+
+        <!--更多精彩-->
+        <More :data="topicData.yxWeek"></More>
 
 
       </div>
@@ -43,16 +62,23 @@
   import Shuffling from './Shuffling_G/Shuffling-G.vue'
   import Product from './Product-G/Product-G.vue'
   import Recommend from './Recommend/Recommend.vue'
-
+  import Ten from './Ten/Ten.vue'
+  import YxLook from './XyLook/XyLook.vue'
+  import More from './More/More.vue'
   export default {
     mounted(){
       this.$store.dispatch("getTopicData")
-        this.$nextTick(() => {
-          new BScroll('.viewport-G', {
+      this.$nextTick(() => {
+        this.bscroll=new BScroll('.viewport-G', {
             click: true,
             scrollY: true, // 垂直滑动
           })
         })
+    },
+    methods:{
+      goToTop(x, y, time, easing){
+        this.bscroll.scrollTo(x, y, time, easing)
+      }
     },
      computed:{
        ...mapState(['topicData'])
@@ -60,14 +86,17 @@
     components:{
       Shuffling,
       Product,
-      Recommend
+      Recommend,
+      Ten,
+      YxLook,
+      More
     }
   }
 </script>
 <style scoped lang="stylus" rel="stylesheet/stylus">
   .topic
     width 100%
-    height 200%
+    height 100%
     header
       position fixed
       z-index 9
@@ -100,8 +129,25 @@
 
     .viewport-G
       width 100%
-      height 200%
+      height 100%
       .content
+        padding-bottom 100px
         width 100%
+    .maoD
+      position fixed
+      bottom 55px
+      right 10px
+      z-index 20
+      div
+        width 50px
+        height 50px
+        line-height 50px
+        text-align center
+        border-radius 50%
+        background: #fff
+        .iconfont
+          color #aaa
+          font-size 35px
+
 
 </style>

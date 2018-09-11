@@ -74,7 +74,7 @@
           margin-left 67px
 
   .product_list
-    width 1000px
+    width 1300px
     height 215px
     padding 10px
     background: #fff

@@ -4,7 +4,7 @@
     <div class="straight_title" v-for="item in data" :key="data.id">
       <div class="grey"></div>
       <span>{{item.name+"好物"}}</span>
-      <ul class="straight_conent">
+      <ul class="straight_conent float_clear">
           <li v-for="data in item.itemList" :key="data.id">
             <img :src="data.listPicUrl">
             <div class="ellipsis straight_conent_info">{{data.simpleDesc}}</div>
@@ -28,7 +28,6 @@
 <style scoped lang="stylus" rel="stylesheet/stylus">
   .straight
     width 100%
-    height 290px
     background: #fff
     .straight_title
       margin-top 25px

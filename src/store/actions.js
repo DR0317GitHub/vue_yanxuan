@@ -1,7 +1,9 @@
 import {
   RECEIVE_HOMEDATA,
   RECEIVE_TOPICDATA,
-  RECEIVE_NAVDATA
+  RECEIVE_NAVDATA,
+  RECEIVE_NAVINDEX,
+  RECEIVE_NAVDETAIL
 } from './mutations-type'
 
 import {
@@ -29,7 +31,7 @@ export default {
       commit(RECEIVE_TOPICDATA, {topicData})
     }
   },
-  //  获取识物页数据
+  //  获取列表页数据
   async getNavData({commit}) {
     const result = await reqNavData()
     if (result.code === 0) {
@@ -37,5 +39,18 @@ export default {
       commit(RECEIVE_NAVDATA, {navData})
     }
   },
+//修改获取的下标
+  setNavIndex({commit},index){
+    commit(RECEIVE_NAVINDEX, index)
+  },
+
+  getNavDetail({commit},callback){
+    commit(RECEIVE_NAVDETAIL)
+    callback && callback()
+  },
+
+
+
+
 
 }

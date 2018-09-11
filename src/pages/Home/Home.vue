@@ -18,18 +18,25 @@
         </ul>
       </div>
     </header>
+    <!--锚点-->
+    <div class="maoD">
+      <a href="javaScript:;" @click="goToTop(0, 0, 500)">
+        <div>
+          <i class="iconfont icon-arrowup"></i>
+        </div>
+      </a>
+    </div>
     <div class="viewport">
       <div class="content">
         <!--轮播图-->
         <Shuffling/>
-        <a name="mao"></a>
-        <!--保障承诺-->
-        <section class="security">
-          <li class="security_li" v-for="(item,index) in homeData.policyDescList">
-            <img :src="item.icon"/>
-            <span>{{item.desc}}</span>
-          </li>
-        </section>
+          <!--保障承诺-->
+          <section class="security">
+            <li class="security_li" v-for="(item,index) in homeData.policyDescList">
+              <img :src="item.icon"/>
+              <span>{{item.desc}}</span>
+            </li>
+          </section>
         <Grey/>
         <!--品牌直供-->
         <section class="straight">
@@ -37,7 +44,7 @@
             <span>品牌制造商直供</span>
             <i class="iconfont icon-youjiantou"></i>
           </div>
-          <ul class="straight_conent">
+          <ul class="straight_conent float_clear" v-if="homeData.tagList">
             <li>
               <div class="straight_conent_text">
                 <h4>{{homeData.tagList[0].name}}</h4>
@@ -97,26 +104,17 @@
         <Grey style="margin-top: 60px"/>
         <!--更多好物-->
         <GoodThing :data="homeData.cateList"></GoodThing>
-        <div>s</div>
-        <div>s</div>
-        <div>s</div>
-        <div>s</div>
-        <div>s</div>
-        <div>s</div>
+
         <Grey/>
         <!--底部-->
-      <footer >
-        <div>
-          <a href="#mao">999999999999999999999999</a>
+      <div class="foot">
+        <div class="foot-content">
+          <span>下载APP</span>
+          <span>电脑版</span>
+          <div class="foot-content-text1">网易公司版权所有 &copy; 1997-2018</div>
+          <div class="foot-content-text1">s食品经营许可证:JK13301080111719</div>
         </div>
-        <div>
-          <div>下载APP</div>
-          <div>电脑版</div>
-          <div>网易公司版权所有 &copy; 1997-2018</div>
-          <div>s食品经营许可证:JK13301080111719</div>
-        </div>
-      </footer>
-
+      </div>
 
       </div>
     </div>
@@ -137,8 +135,7 @@
     data() {
       return {
         navlist: ['推荐', '居家', '配件', '服装', '电器', '洗护', '饮食', '餐厨', '婴童', '文体', '特色区'],
-        current: 0
-
+        current: 0,
       }
     },
     watch: {
@@ -153,7 +150,7 @@
       this.$store.dispatch('getHomeData', () => {
         this.$nextTick(() => {
           this._initScroll()
-          new BScroll('.viewport', {
+          this.bscroll=new BScroll('.viewport', {
             click: true,
             scrollY: true, // 垂直滑动
           })
@@ -170,6 +167,14 @@
           scrollX: true, // 水平滑动
         })
       },
+      goToTop(x, y, time, easing){
+        console.log('-------------',this)
+        this.bscroll.scrollTo(x, y, time, easing)
+      },
+      backTop() {
+        document.body.scrollTop = 0
+        document.documentElement.scrollTop = 0
+      }
     },
 
 
@@ -190,7 +195,7 @@
   @import "../../common/stylus/mixins.styl"
   .div
     width 100%
-    height 200%
+    height 100%
     header
       position fixed
       z-index 9
@@ -221,16 +226,17 @@
           font-size 12px
 
       ul
-        width 500px
+        background: #fff
+        width 800px
         margin-top 15px
         white-space: nowrap
         padding-left 10px
         li
           height 20px
           float left
-          margin-right 20px
+          margin-right 30px
           & > span
-            font-size 12px
+            font-size 15px
             font-weight bold
           &.on
             color #b4282d
@@ -238,8 +244,9 @@
 
     .viewport
       width 100%
-      height 200%
+      height 100%
       .content
+        padding-bottom 150px
         width 100%
         .security
           width 100%
@@ -259,7 +266,6 @@
 
         .straight
           width 100%
-          height 290px
           background: #fff
           .straight_title
             margin-top 25px
@@ -285,5 +291,40 @@
           img
             width 100%
             height 200px
+
+        .foot
+          padding 10px
+          width 100%
+          background: #000;
+          .foot-content
+            span
+              color white
+              padding 5px 5px
+              border 1px solid white
+              display inline-block
+              margin-right 20px
+              margin-bottom 10px
+            .foot-content-text1
+              color #ccc
+              margin-bottom 10px
+              font-size 13px
+
+
+    .maoD
+      position fixed
+      bottom 55px
+      right 10px
+      z-index 20
+      div
+        width 50px
+        height 50px
+        line-height 50px
+        text-align center
+        border-radius 50%
+        background: #fff
+        .iconfont
+          color #aaa
+          font-size 35px
+
 
 </style>

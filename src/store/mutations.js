@@ -5,7 +5,9 @@
 import {
   RECEIVE_HOMEDATA,
   RECEIVE_TOPICDATA,
-  RECEIVE_NAVDATA
+  RECEIVE_NAVDATA,
+  RECEIVE_NAVINDEX,
+  RECEIVE_NAVDETAIL
 } from './mutations-type'
 
 export default {
@@ -21,6 +23,13 @@ export default {
   [RECEIVE_NAVDATA] (state, {navData}) {
     state.navData = navData
   },
-
+  //获取修改的下标
+  [RECEIVE_NAVINDEX] (state, {index}) {
+    state.NavIndex = index
+  },
+  //获取分页的数据
+  [RECEIVE_NAVDETAIL] (state) {
+    state.NavDetail =state.navData[state.NavIndex]
+  },
 
 }

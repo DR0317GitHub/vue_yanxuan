@@ -2,7 +2,7 @@
   <div id="app">
     <!--显示当前页面-->
     <router-view/>
-    <Footer />
+    <Footer v-show="$route.meta.ShowFooter" />
   </div>
 </template>
 
@@ -29,7 +29,6 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
   width: 100%;
   height: 100%;
 

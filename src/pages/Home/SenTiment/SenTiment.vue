@@ -2,7 +2,7 @@
   <div>
     <div class="product">
       <div class="product_title">
-        <span>人气推荐,</span>
+        <span>人气推荐</span>
         <div class="product_button">
           <div>查看全部</div>
           <i class="iconfont icon-icon"></i>
@@ -57,7 +57,7 @@
       left 50%
       margin-top -35px
       margin-left -40px
-      color #8ba0b6
+      color #b4a078
       font-size 18px
       .product_button
         margin-top 10px
@@ -66,8 +66,8 @@
           height 30px
           line-height 30px
           text-align center
-          color #8ba0b6
-          background: #d8e5f1;
+          color #b4a078
+          background: #f4e9cb
           font-size 13px
         i
           display block
@@ -75,7 +75,7 @@
           margin-left 67px
 
   .product_list
-    width 1000px
+    width 1300px
     height 215px
     padding 10px
     background: #fff
