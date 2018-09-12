@@ -5,10 +5,11 @@ import App from './App.vue'
 import store from './store'
 import router from "./router"
 import './mock/mockServer' // 加载mockServer
+
 import {Button} from 'mint-ui'
 import VueLazyload from 'vue-lazyload'
-import loading from './common/img/loading.gif'
 
+import loading from './common/img/loading.gif'
 import Grey from "./components/Grey/Grey.vue"
 
 Vue.config.productionTip = false
